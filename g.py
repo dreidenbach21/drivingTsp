@@ -24,16 +24,31 @@ def solve():
         homes.add(value)
         H-=1
 
-
+    print([str(i) for i in range(50)])
+    print(homes)
     un = UnionFind()
     source = UnionNode(0)
+    print(type(source.get_vertices()))
+    dict = source.vertices
+    unIndex = 0
+    unIndex+=1
+    dict[0] = unIndex
+    # union find index of the elements array
     un.add(source)
-    for a in homes:
-        print(a)
-        loc = UnionNode(a)
-        un.add(loc)
 
-    print(un)
+
+
+
+    for a in homes:
+        # print(a)
+        loc = UnionNode(a)
+        dict = loc.get_vertices()
+        dict[a] = unIndex
+        unIndex+=1
+        un.add(loc)
+    # print(un)
+
+
 
     G.add_node(0);
 
@@ -63,6 +78,6 @@ def solve():
     # plt.show()
     # A = nx.adjacency_matrix(G)
     A = nx.to_numpy_matrix(G, nodelist=[i for i in range(size)])
-    # print(A)
+    print(A)
 
 solve()
